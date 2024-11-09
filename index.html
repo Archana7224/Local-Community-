@@ -620,7 +620,7 @@
             <div class="heading-underline mx-auto mt-2 w-1/4 h-1 bg-blue-500"></div>
         </div>
         <div class="flex flex-wrap justify-center">
-            <div class="max-w-sm m-4 bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="max-w-sm m-4 bg-white shadow-lg rounded-lg overflow-hidden card" data-aos="fade-up">
                 <div class="p-6">
                     <h4 class="text-xl font-semibold mb-2">Event Title 1</h4>
                     <p class="text-gray-600">Date: January 15, 2024</p>
@@ -630,7 +630,7 @@
                 </div>
             </div>
 
-            <div class="max-w-sm m-4 bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="max-w-sm m-4 bg-white shadow-lg rounded-lg overflow-hidden card" data-aos="fade-up">
                 <div class="p-6">
                     <h4 class="text-xl font-semibold mb-2">Event Title 2</h4>
                     <p class="text-gray-600">Date: February 20, 2024</p>
@@ -640,7 +640,7 @@
                 </div>
             </div>
 
-            <div class="max-w-sm m-4 bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="max-w-sm m-4 bg-white shadow-lg rounded-lg overflow-hidden card" data-aos="fade-up">
                 <div class="p-6">
                     <h4 class="text-xl font-semibold mb-2">Event Title 3</h4>
                     <p class="text-gray-600">Date: March 10, 2024</p>
@@ -652,6 +652,28 @@
         </div>
     </div>
 </section>
+
+<script>
+    // GSAP animation
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Select all cards
+    const cards = document.querySelectorAll('.card');
+
+    // Animate cards on scroll
+    cards.forEach(card => {
+        gsap.from(card, {
+            scrollTrigger: {
+                trigger: card,
+                start: "top 80%", // Trigger when card is 80% from the top of the viewport
+                toggleActions: "play none none reverse",
+            },
+            opacity: 0,
+            y: 30, // Move down 30 pixels
+            duration: 0.5,
+        });
+    });
+</script>
     
 
 
@@ -780,5 +802,6 @@
     <script src="vendor/aos/aos.js"></script>
      <!-- Template Main JS File -->
   <script type="module" src="js/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
   </body>
 </html>
